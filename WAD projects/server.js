@@ -27,9 +27,9 @@ connection.connect(function (err) {
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/example', (req, res) => {
-    let { firstname, lastname, email, date, phone, password } = req.body
-
-    var sql = `INSERT INTO signup (f_name, l_name, email, date, phone, password) VALUES ('${firstname}', '${lastname}', '${email}' , '${date}', '${phone}', '${password}')`;
+    let { firstname, lastname, email, dob, phone, password } = req.body
+ 
+    var sql = `INSERT INTO signup (f_name, l_name, dob, email_id, phone_num, password) VALUES ('${firstname}', '${lastname}','${dob}','${email}', '${phone}', '${password}')`;
     connection.query(sql, (err, result) => {
         if (err) {
             console.log(err)

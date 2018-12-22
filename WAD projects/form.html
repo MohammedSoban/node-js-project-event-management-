@@ -96,22 +96,24 @@
                         <button type="submit" onclick="submitForm()" name="submit" class="btn btn-primary btn-block">Submit</button>
                         <script>
                                 function submitForm() {
-                                        debugger
-                                        var firstname = 'soban'
-                                        var lastname = 'waraich'
-                                        var email = 'soban@gmail.com'
-                                        var date = '2018-12-22'
-                                        var phone = '03432145776'
-                                        var password = '123456'
+                                        
+                                        var firstname = document.getElementById("f_name").value
+                                        var lastname = document.getElementById("l_name").value
+                                        var email = document.getElementById("email").value
+                                        var dob = document.getElementById("dob").value
+                                        var phone = document.getElementById("phone").value
+                                        var password = document.getElementById("password").value
+
                                         var url = 'http://localhost:3000/example'
                                         var data = {
                                                 firstname,
                                                 lastname,
                                                 email,
-                                                date,
+                                                dob,
                                                 phone,
                                                 password
                                         }
+                                        
                                         return fetch(url, {
                                                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                                                 headers: {
@@ -121,9 +123,9 @@
                                         }).then((response) => {
                                                 return response.json()
                                         }).then((data)=>{
-                                                debugger
+                                               
                                         }).catch((err)=>{
-                                                debugger
+                                                
                                         }) // parses response to JSON
                                 }
                         </script>
