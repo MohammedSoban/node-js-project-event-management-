@@ -28,20 +28,17 @@ app.get('/', (req, res) => res.send('Hello World!'))
 
 app.post('/userSigupForm', (req, res) => {
     let { firstname, lastname, email, dob, address, phone, password } = req.body
- 
+
     var sql = `INSERT INTO signup (f_name, l_name, dob, Address, email_id, phone_num, password) VALUES ('${firstname}', '${lastname}','${dob}','${address}','${email}', '${phone}', '${password}')`;
     connection.query(sql, (err, result) => {
         if (err) {
-            console.log(err)
-            
-        throw err;
-           
-        };
-        
-        
-        console.log("1 record inserted");
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+        } else {
+            console.log("1 record inserted");
+            res.status(200).send({ data: req.body, status: 200 })
+        }
     });
-    res.send(req.body)
 })
 
 app.post('/vendorSigupForm', (req, res) => {
@@ -53,18 +50,17 @@ app.post('/vendorSigupForm', (req, res) => {
         companyAddress,
         phone,
         password } = req.body
- 
+
     var sql = `INSERT INTO vendorsignup (f_name, l_name, dob, email_id, company_name, company_address, phone, password) VALUES ('${firstname}', '${lastname}','${dob}','${email}','${companyName}','${companyAddress}','${phone}', '${password}')`;
     connection.query(sql, (err, result) => {
         if (err) {
-            console.log(err)
-            
-        throw err;
-           
-        };    
-        console.log("1 record inserted");
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.send(JSON.stringify(err))
+        } else {
+            console.log("1 record inserted");
+            res.send(req.body)
+        }
     });
-    res.send(req.body)
 })
 
 
