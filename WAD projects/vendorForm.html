@@ -2,41 +2,183 @@
 <html>
 
 <head>
-
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="stylesheet" href="./css/bootstrap.css">
-        <link rel="stylesheet" href="./css/bootstrap-reboot.css">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <style>
-
-                form{
-            margin-top: 10%
-                
-        }
-        
-     
-       
-        
-        
-        </style>
+        <title>Vendor SignUp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--===============================================================================================-->
+        <link rel="icon" type="image/png" href="img/icons/favicon.ico" />
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/lstyle.css">
+        <!--===============================================================================================-->
 </head>
-
 <body>
-
         <div class=container>
                 <form>
+                        <div class="limiter">
+                                <div class="container-login" style="background-image: url('img/bg-02.jpg');">
+                                        <div class="wrap-login p-l-110 p-r-110 p-t-62 p-b-33">
+                                                <div class="login-form validate-form flex-sb flex-w">
+                                                        <span class="login-form-title p-b-53">Vendor Sign Up</span>
 
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">First name</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="firstname is required">
+                                                                <input class="input100" type="text" class="form-control"
+                                                                        id="f_name" placeholder="Enter First Name">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Last name</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="lastname is required">
+                                                                <input class="input100" type="text" class="form-control"
+                                                                        id="l_name" placeholder="Enter Last Name">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Date Of Birth</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="date of birth is required">
+                                                                <input class="input100" type="date" class="form-control"
+                                                                        id="dob" placeholder="Enter Date Of Birth">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">E-mail Address</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="email is required">
+                                                                <input class="input100" type="email" class="form-control"
+                                                                        id="email" placeholder="Enter E-mail Address">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Campany Name</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="address is required">
+                                                                <input class="input100" type="text" class="form-control"
+                                                                        id="companyName" placeholder="Enter Campany Name">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Campany Address</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="address is required">
+                                                                <input class="input100" type="text" class="form-control"
+                                                                        id="companyAddress" placeholder="Enter Campany Address">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Phone Number</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="phone number is required">
+                                                                <input class="input100" type="number" class="form-control"
+                                                                        pattern="03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}"
+                                                                        id="phone" placeholder="Enter Phone Number">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Password</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="password is required">
+                                                                <input class="input100" type="password" class="form-control"
+                                                                        id="password" placeholder="Enter Password">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+                                                        <div class="p-t-31 p-b-9">
+                                                                <span class="txt1">Confirm Password</span>
+                                                        </div>
+                                                        <div class="wrap-input100 validate-input" data-validate="confirm_password is required">
+                                                                <input class="input100" type="password" class="form-control"
+                                                                        id="confirm_password" placeholder="Enter Confirm Password">
+                                                                <span class="focus-input100"></span>
+                                                        </div>
+
+
+
+                                                        <script>
+                                                                var password = document.getElementById("password")
+                                                                        , confirm_password = document.getElementById("confirm_password");
+
+                                                                function validatePassword() {
+                                                                        if (password.value != confirm_password.value) {
+                                                                                confirm_password.setCustomValidity("Passwords Don't Match");
+                                                                        } else {
+                                                                                confirm_password.setCustomValidity('');
+                                                                        }
+                                                                }
+
+                                                                password.onchange = validatePassword;
+                                                                confirm_password.onkeyup = validatePassword;
+
+                                                        </script>
+
+
+
+
+                                                        <div class="container-login-form-btn m-t-17">
+                                                                <button class="login-form-btn btn btn-primary btn-block"
+                                                                        onclick="submitForm()"name="submit">SignUp</button>
+                                                        </div>
+
+                                                      <!--  <button type="submit" onclick="submitForm()" name="submit"
+                                                                class="btn btn-primary btn-block">Submit</button>-->
+                                                                
+                                                                <script>
+                                                                function submitForm() {
+
+                                                                        var firstname = document.getElementById("f_name").value
+                                                                        var lastname = document.getElementById("l_name").value
+                                                                        var dob = document.getElementById("dob").value
+                                                                        var email = document.getElementById("email").value
+                                                                        var companyName = document.getElementById("companyName").value
+                                                                        var companyAddress = document.getElementById("companyAddress").value
+                                                                        var phone = document.getElementById("phone").value
+                                                                        var password = document.getElementById("password").value
+
+                                                                        var url = 'http://localhost:3000/vendorSigupForm'
+                                                                        var data = {
+                                                                                firstname,
+                                                                                lastname,
+                                                                                dob,
+                                                                                email,
+                                                                                companyName,
+                                                                                companyAddress,
+                                                                                phone,
+                                                                                password
+                                                                        }
+
+                                                                        return fetch(url, {
+                                                                                method: "POST", // *GET, POST, PUT, DELETE, etc.
+                                                                                headers: {
+                                                                                        "Content-Type": "application/json"
+                                                                                },
+                                                                                body: JSON.stringify(data), // body data type must match "Content-Type" header
+                                                                        }).then((response) => {
+                                                                                return response.json()
+                                                                        }).then((data) => {
+
+                                                                        }).catch((err) => {
+
+                                                                        }) // parses response to JSON
+                                                                }
+                                                        </script>
+
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+
+
+        <!--
                         <div class="form-group col-sm-12">
                                 <label for="exampleInputEmail1">First Name</label>
                                 <input type="text" class="form-control" id="f_name" placeholder="Enter First Name">
@@ -58,13 +200,13 @@
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <label for="exampleInputEmail1">Company Name</label>
-                            <input type="text" class="form-control" id="companyName" placeholder="Company Name">
+                                <label for="exampleInputEmail1">Company Name</label>
+                                <input type="text" class="form-control" id="companyName" placeholder="Company Name">
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <label for="exampleInputEmail1">Company Address</label>
-                            <input type="text" class="form-control" id="companyAddress" placeholder="company Address">
+                                <label for="exampleInputEmail1">Company Address</label>
+                                <input type="text" class="form-control" id="companyAddress" placeholder="company Address">
                         </div>
 
                         <div class="form-group col-sm-12">
@@ -106,7 +248,7 @@
                         <button type="submit" onclick="submitForm()" name="submit" class="btn btn-primary btn-block">Submit</button>
                         <script>
                                 function submitForm() {
-                                        
+
                                         var firstname = document.getElementById("f_name").value
                                         var lastname = document.getElementById("l_name").value
                                         var dob = document.getElementById("dob").value
@@ -127,7 +269,7 @@
                                                 phone,
                                                 password
                                         }
-                                        
+
                                         return fetch(url, {
                                                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                                                 headers: {
@@ -136,16 +278,16 @@
                                                 body: JSON.stringify(data), // body data type must match "Content-Type" header
                                         }).then((response) => {
                                                 return response.json()
-                                        }).then((data)=>{
-                                               
-                                        }).catch((err)=>{
-                                
+                                        }).then((data) => {
+
+                                        }).catch((err) => {
+
                                         }) // parses response to JSON
                                 }
                         </script>
                 </form>
         </div>
-
+-->
 </body>
 
 </html>
