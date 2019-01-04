@@ -94,15 +94,8 @@
 								window.location.href="/index.html";		 
 						}
 
-						else{
-
-							console.log('login fail: ', response.error)
-
-							alert(response.error.code);
-                                        
-						}
-
-						if (response.status== 204) {
+						else if (response.status== 204) {	
+							
 								console.log('Email and password does not match', response.data)
 								alert("Email and password does not match");
 								 
@@ -116,7 +109,7 @@
 						// alert('Record has been insert successfully')
 				}).catch((err) => {
 						console.log('Error occured', err)
-						//alert(err)
+						alert(err)
 				}) // parses response to JSON
 		}
 </script>
