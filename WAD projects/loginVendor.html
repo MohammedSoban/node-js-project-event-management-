@@ -70,9 +70,7 @@
 				var email_id = document.getElementById("email_id").value
 				var password = document.getElementById("password").value
 
-				console.log(email_id)
-				console.log(password)
-
+				
 				var url = 'http://localhost:3000/loginVendor'
 				var data = {
 						email_id,
@@ -90,6 +88,7 @@
 					
 						if (response.status == 200) {
 								console.log('login successful', response.data)
+								getID()
 								alert("login successfull");
 								window.location.href="/index.html";		 
 						}
@@ -111,6 +110,58 @@
 						console.log('Error occured', err)
 						alert(err)
 				}) // parses response to JSON
+
+
+
+
+				
+				
+		}
+	
+		
+		getID()
+		{ 
+			    var email_id = document.getElementById("email_id").value
+					
+				var url = 'http://localhost:3000/getId'
+				var data = {
+						email_id
+				}
+				fetch(url, {
+						method: "POST", // *GET, POST, PUT, DELETE, etc.
+						headers: {
+								"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data), // body data type must match "Content-Type" header
+				}).then((response) => {
+						return response.json()
+				}).then((response) => {
+					
+						if (response.status == 200) {
+								console.log('login successful', response.data)
+								var id=json(data);
+								console.log(id);		 
+						}
+
+						else if (response.status== 204) {	
+							
+								console.log('Email and password does not match', response.data)
+								alert("incorrect email or password");
+								 
+						}
+
+						else { // when error
+								console.log('login fail: ', response.error)	
+								alert(response.error.code)
+							
+						}
+						// alert('Record has been insert successfully')
+				}).catch((err) => {
+						console.log('Error occured', err)
+						alert(err)
+				}) // parses response to JSON
+ 
+
 		}
 </script>
 

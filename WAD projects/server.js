@@ -123,6 +123,50 @@ app.post('/loginVendor', (req, res) => {
     });
 })
 
+app.post('/addVenue', (req, res) => {
+    let {
+        v_name,
+        v_host,
+        v_address,
+        v_details } = req.body
+
+    //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+    var sql = `INSERT INTO venues (venue_name,venue_hosting,venue_address,venue_details) VALUES ('${v_name}', '${v_host}','${v_address}','${v_details }')`;
+    //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
+
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+        } else {
+            console.log("1 record inserted");
+            res.status(200).send({ data: req.body, status: 200 })
+        }
+    });
+})
+
+
+app.post('/getId', (req, res) => {
+    let {
+       email_id } = req.body
+
+    //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+    //var sql = `SELECT vendor_id from vendorsignup where email_id="sweetdeath96@hotmail.com"`
+    var sql='SELECT vendor_id FROM vendorsignup WHERE email_id = ' + mysql.escape(email_id);
+    //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
+
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+        } else {
+            console.log("1 record inserted");
+            res.json(data);
+            res.status(200).send({ data: req.body, status: 200 })
+        }
+    });
+})
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

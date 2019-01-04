@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/lstyle.css">
         <!--===============================================================================================-->
 </head>
+
 <body>
         <div class=container>
                 <form>
@@ -128,10 +129,10 @@
                                                                         onclick="submitForm()">SignUp</button>
                                                         </div>
 
-                                                      <!--  <button type="submit" onclick="submitForm()" name="submit"
+                                                        <!--  <button type="submit" onclick="submitForm()" name="submit"
                                                                 class="btn btn-primary btn-block">Submit</button>-->
-                                                                
-                                                                <script>
+
+                                                        <script>
                                                                 function submitForm() {
 
                                                                         var firstname = document.getElementById("f_name").value
@@ -155,7 +156,7 @@
                                                                                 password
                                                                         }
 
-                                                                 fetch(url, {
+                                                                        fetch(url, {
                                                                                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                                                                                 headers: {
                                                                                         "Content-Type": "application/json"
@@ -166,22 +167,21 @@
                                                                         }).then((response) => {
                                                                                 if (response.status == 200) {
                                                                                         console.log('record has been insert succuss', response.data)
-                                                                                        
+
                                                                                         alert("you have successfuly signed up");
-                                                                                        
-                                                                                        window.location.href="/index.html";
-                                                                                
+
+                                                                                        window.location.href = "/index.html";
+
                                                                                 }
                                                                                 else { // when error
                                                                                         console.log('record is not inserted Error: ', response.error)
-                                                                                        
-                                                                                        
-                                                                                        if(response.error.code=="ER_DUP_ENTRY")
-                                                                                        {
+
+
+                                                                                        if (response.error.code == "ER_DUP_ENTRY") {
                                                                                                 alert("This email id is alredy resgisterd");
                                                                                         }
 
-                                                                                        
+
                                                                                 }
                                                                                 // alert('Record has been insert successfully')
                                                                         }).catch((err) => {
@@ -198,7 +198,7 @@
 
 
 
-        <!--
+                        <!--
                         <div class="form-group col-sm-12">
                                 <label for="exampleInputEmail1">First Name</label>
                                 <input type="text" class="form-control" id="f_name" placeholder="Enter First Name">

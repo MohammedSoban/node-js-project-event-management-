@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Client SignUp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="img/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/lstyle.css">
+    <!--===============================================================================================-->
+
+
+</head>
+
+<body>
+
+
+    <div class="limiter">
+        <div class="container-login" style="background-image: url('img/bg-02.jpg');">
+            <div class="wrap-login p-l-110 p-r-110 p-t-62 p-b-33">
+                <div class="login-form validate-form flex-sb flex-w">
+                    <span class="login-form-title p-b-53">Add Venue</span>
+
+
+                    <div class="p-t-31 p-b-9">
+                        <span class="txt1">Venue Name</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="firstname is required">
+                        <input class="input100" type="text" class="form-control" id="v_name" placeholder="Enter Venue Name">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="p-t-31 p-b-9">
+                        <span class="txt1">How many people can your venue host?</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="lastname is required">
+                        <input class="input100" type="text" class="form-control" id="v_host" placeholder="Enter Host count">
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="p-t-31 p-b-9">
+                        <span class="txt1">Venue Address</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="address is required">
+                        <input class="input100" type="text" class="form-control" id="v_address" placeholder="Enter Venue Address">
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="p-t-31 p-b-9">
+                        <span class="txt1">Venue Details</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="email is required">
+
+                        <textarea class="input100" class="form-control" rows="7" cols="70" id="v_details" type="text"
+                            placeholder="Enter your venue details...."></textarea>
+                        <span class="focus-input100"></span>
+
+                    </div>
+
+                    <div class="container-login-form-btn m-t-17">
+                        <button class="login-form-btn btn btn-primary btn-block" onclick="submitForm()">Add Venue</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+
+    <script src="js/main.js"></script>
+
+
+
+    <!--================================================SOBAN SCRIPT======================================================-->
+
+
+
+
+    <script>
+        function submitForm() {
+            
+            var v_name = document.getElementById("v_name").value
+            var v_host = document.getElementById("v_host").value
+            var v_address = document.getElementById("v_address").value
+            var v_details = document.getElementById("v_details").value
+
+            
+            var url = 'http://localhost:3000/addVenue'
+            var data = {
+                v_name,
+                v_host,
+                v_address,
+                v_details,
+            }
+            
+            fetch(url, {
+                method: "POST", // *GET, POST, PUT, DELETE, etc.
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data), // body data type must match "Content-Type" header
+            }).then((response) => {
+                return response.json()
+            }).then((response) => {
+                
+                if (response.status == 200) {
+                    
+                    console.log('record has been insert succuss', response.data)
+
+                    alert("you have successfuly added the venue");
+
+                    window.location.href = "/index.html";
+
+                }
+                else { // when error
+                    console.log('record is not inserted Error: ', response.error)
+
+                    alert(response.error.code)
+
+                }
+                // alert('Record has been insert successfully')
+            }).catch((err) => {
+                console.log('Error occured in insertion', err)
+                // alert('Error in insertion')
+            }) // parses response to JSON
+        }
+    </script>
+
+
+
+</body>
+
+</html>
