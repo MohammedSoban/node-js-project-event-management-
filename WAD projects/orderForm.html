@@ -28,53 +28,53 @@
         <div class="container-login" style="background-image: url('img/bg-02.jpg');">
             <div class="wrap-login p-l-110 p-r-110 p-t-62 p-b-33">
                 <div class="login-form validate-form flex-sb flex-w">
-                    <span class="login-form-title p-b-53">Add Venue</span>
+                    <span class="login-form-title p-b-53">Order</span>
 
 
                     <div class="p-t-31 p-b-9">
-                        <span class="txt1">Venue Name</span>
+                        <span class="txt1">Select venue</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="firstname is required">
-                        <input class="input100" type="text" class="form-control" id="v_name" placeholder="Enter Venue Name">
+                        
+                        <select class="input100" class="form-control" id="v_name">
+                                <option value="regent plaza">regent plaza: 100000RS per night</option>
+                                <option value="Pearl continental">Pearl continental: 100000RS per night</option>
+                                <option value="mehran hotel">mehran hotel: 100000RS per night</option>
+                                <option value="shadi qila">shadi qila: 100000RS per night</option>
+                              </select>
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="p-t-31 p-b-9">
-                            <span class="txt1">Venue price per night RS.</span>
-                        </div>
-                        <div class="wrap-input100 validate-input" data-validate="firstname is required">
-                            <input class="input100" type="number" class="form-control" id="v_price" placeholder="Enter Venue price">
-                            <span class="focus-input100"></span>
-                        </div>
-
-                    <div class="p-t-31 p-b-9">
-                        <span class="txt1">How many people can your venue host?</span>
+                        <span class="txt1">How many people you want to host?</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="lastname is required">
-                        <input class="input100" type="number" class="form-control" id="v_host" placeholder="Enter Host count">
+                        <input class="input100" type="number" class="form-control" id="c_host" placeholder="Enter Host count">
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="p-t-31 p-b-9">
-                        <span class="txt1">Venue Address</span>
+                            <span class="txt1">Date of event</span>
+                        </div>
+                    <div class="wrap-input100 validate-input" data-validate="date of birth is required">
+                            <input class="input100" type="date" class="form-control"
+                                    id="event_date" placeholder="">
+                            <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="p-t-31 p-b-9">
+                        <span class="txt1">would you like to have food service as well</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="address is required">
-                        <input class="input100" type="text" class="form-control" id="v_address" placeholder="Enter Venue Address">
+                            <select class="input100" class="form-control" id="food_choice">
+                                    <option value="regent plaza">yes</option>
+                                    <option value="regent plaza">no</option>
+                                  </select>
                         <span class="focus-input100"></span>
                     </div>
-                    <div class="p-t-31 p-b-9">
-                        <span class="txt1">Venue Details</span>
-                    </div>
-                    <div class="wrap-input100 validate-input" data-validate="email is required">
-
-                        <textarea class="input100" class="form-control" rows="7" cols="70" id="v_details" type="text"
-                            placeholder="Enter your venue details...."></textarea>
-                        <span class="focus-input100"></span>
-
-                    </div>
-
+                   
                     <div class="container-login-form-btn m-t-17">
-                        <button class="login-form-btn btn btn-primary btn-block" onclick="submitForm()">Add Venue</button>
+                        <button class="login-form-btn btn btn-primary btn-block" onclick="submitForm()">Confirm Order</button>
                     </div>
 
                 </div>
@@ -98,23 +98,21 @@
 
     <script>
         function submitForm() {
-            
+            debugger
             var v_name = document.getElementById("v_name").value
-            var v_price = document.getElementById("v_price").value
-            var v_host = document.getElementById("v_host").value
-            var v_address = document.getElementById("v_address").value
-            var v_details = document.getElementById("v_details").value
+            var v_host = document.getElementById("c_host").value
+            var date_event = document.getElementById("event_date").value
+            var food_choice = document.getElementById("food_choice").value
 
             
-            var url = 'http://localhost:3000/addVenue'
+            var url = 'http://localhost:3000/orderForm'
             var data = {
                 v_name,
-                v_price,
-                v_host,
-                v_address,
-                v_details,
+                c_host,
+                date_event,
+                food_choice,
             }
-            
+            debugger
             fetch(url, {
                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                 headers: {
@@ -124,7 +122,7 @@
             }).then((response) => {
                 return response.json()
             }).then((response) => {
-                
+                debugger
                 if (response.status == 200) {
                     
                     console.log('record has been insert succuss', response.data)

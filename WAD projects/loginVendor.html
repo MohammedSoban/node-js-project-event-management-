@@ -119,14 +119,16 @@
 		}
 	
 		
-		getID()
+		function getID()
 		{ 
+			
 			    var email_id = document.getElementById("email_id").value
 					
 				var url = 'http://localhost:3000/getId'
 				var data = {
 						email_id
 				}
+				
 				fetch(url, {
 						method: "POST", // *GET, POST, PUT, DELETE, etc.
 						headers: {
@@ -134,27 +136,19 @@
 						},
 						body: JSON.stringify(data), // body data type must match "Content-Type" header
 				}).then((response) => {
+					debugger
 						return response.json()
-				}).then((response) => {
-					
-						if (response.status == 200) {
+				}).then((response) => 
+				{
+                    debugger
+					console.log(data)
+						if (response.status == 200){
+							debugger
 								console.log('login successful', response.data)
-								var id=json(data);
-								console.log(id);		 
+								console.log(data)
+								
 						}
 
-						else if (response.status== 204) {	
-							
-								console.log('Email and password does not match', response.data)
-								alert("incorrect email or password");
-								 
-						}
-
-						else { // when error
-								console.log('login fail: ', response.error)	
-								alert(response.error.code)
-							
-						}
 						// alert('Record has been insert successfully')
 				}).catch((err) => {
 						console.log('Error occured', err)

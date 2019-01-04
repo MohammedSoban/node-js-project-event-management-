@@ -126,12 +126,13 @@ app.post('/loginVendor', (req, res) => {
 app.post('/addVenue', (req, res) => {
     let {
         v_name,
+        v_price,
         v_host,
         v_address,
         v_details } = req.body
 
     //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
-    var sql = `INSERT INTO venues (venue_name,venue_hosting,venue_address,venue_details) VALUES ('${v_name}', '${v_host}','${v_address}','${v_details }')`;
+    var sql = `INSERT INTO venues (venue_name,venue_price,venue_hosting,venue_address,venue_details) VALUES ('${v_name}', '${v_price}','${v_host}','${v_address}','${v_details }')`;
     //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
 
     connection.query(sql, (err, result) => {
@@ -161,12 +162,34 @@ app.post('/getId', (req, res) => {
             res.status(500).send(JSON.stringify({ error: err, status: 500 }))
         } else {
             console.log("1 record inserted");
-            res.json(data);
-            res.status(200).send({ data: req.body, status: 200 })
+          // res.json(result);
+           //console.log(result)
+            res.send({ data: req.body.result})
         }
     });
 })
 
 
+app.post('/orderForm', (req, res) => {
+    let {
+        v_name,
+        c_host,
+        date_event,
+        food_choice, } = req.body
+
+    //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+    var sql = `INSERT INTO orders (venue_name,host_count,date_event,food_choice) VALUES ('${v_name}', '${c_host}','${date_event}','${food_choice}')`;
+    //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
+
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+        } else {
+            console.log("1 record inserted");
+            res.status(200).send({ data: req.body, status: 200 })
+        }
+    });
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
