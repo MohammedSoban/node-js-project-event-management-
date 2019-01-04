@@ -94,5 +94,35 @@ app.post('/login', (req, res) => {
 })
 
 
+app.post('/loginVendor', (req, res) => {
+    let {
+        email_id,
+        password } = req.body
+
+    //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+    var sql = 'SELECT * FROM vendorsignup WHERE email_id = ' + mysql.escape(email_id) + 'and password= ' + mysql.escape(password);
+    //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
+
+    connection.query(sql, [email_id][password], (err, result) => {
+        if (err) {
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+        }
+        else {
+            if (result.length > 0) {
+                console.log("loign success");
+                res.status(200).send({ data: req.body, status: 200 })
+            }
+            else {
+                console.log("email and pass dont match");
+                res.status(500).send({ error: 'email and pass dont match', status: 204 })
+                //res.status(204).send({ data: req.body, status: 204 })
+            }
+        }
+
+    });
+})
+
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
