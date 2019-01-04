@@ -24,7 +24,7 @@
 		<div class="container-login" style="background-image: url('img/bg-02.jpg');">
 			<div class="wrap-login p-l-110 p-r-110 p-t-62 p-b-33">
 				<form class="login-form validate-form flex-sb flex-w">
-					<span class="login-form-title p-b-53">Login</span>
+					<span class="login-form-title p-b-53">Client Login</span>
 					<div class="p-t-31 p-b-9">
 
 
@@ -61,7 +61,7 @@
 
 
 					<div class="container-login-form-btn m-t-17">
-						<a href=""<button class="login-form-btn" onclick="login()" type="button">Sign in</button>
+						<button class="login-form-btn" onclick="login()" type="button">Sign in</button>
 					</div>
 
 <script>
@@ -94,10 +94,17 @@
 								window.location.href="/index.html";		 
 						}
 
-						else if (response.status== 204) {	
-							
+						else{
+
+							console.log('login fail: ', response.error)
+
+							alert(response.error.code);
+                                        
+						}
+
+						if (response.status== 204) {
 								console.log('Email and password does not match', response.data)
-								alert("incorrect email or password");
+								alert("Email and password does not match");
 								 
 						}
 
@@ -109,7 +116,7 @@
 						// alert('Record has been insert successfully')
 				}).catch((err) => {
 						console.log('Error occured', err)
-						alert(err)
+						//alert(err)
 				}) // parses response to JSON
 		}
 </script>
@@ -118,7 +125,7 @@
 					<div class="w-full text-center p-t-55">
 						<span class="txt2">Not a member?</span>
 
-						<a href="popupSelectSigupAs.html" class="txt2">Sign up now</a>
+						<a href="form.html" class="txt2">Sign up now</a>
 					</div>
 				</form>
 			</div>

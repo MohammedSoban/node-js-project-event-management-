@@ -451,6 +451,22 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   font-weight: 700;
 }
+.section-desh-title{
+  font-size: 50px;
+  text-decoration: underline;
+  color: #111;
+  text-align: center;
+  font-weight: 600;
+}
+
+.section-desh-text{
+  font-size: 30px;
+  color: #111;
+  text-align: left;
+  font-weight: 500;
+  padding-top: 25px;
+}
+
 
 .section-description {
   text-align: center;
