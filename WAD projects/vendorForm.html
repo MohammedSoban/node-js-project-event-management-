@@ -155,7 +155,7 @@
                                                                                 password
                                                                         }
 
-                                                                        return fetch(url, {
+                                                                 fetch(url, {
                                                                                 method: "POST", // *GET, POST, PUT, DELETE, etc.
                                                                                 headers: {
                                                                                         "Content-Type": "application/json"
@@ -163,10 +163,30 @@
                                                                                 body: JSON.stringify(data), // body data type must match "Content-Type" header
                                                                         }).then((response) => {
                                                                                 return response.json()
-                                                                        }).then((data) => {
+                                                                        }).then((response) => {
+                                                                                if (response.status == 200) {
+                                                                                        console.log('record has been insert succuss', response.data)
+                                                                                        
+                                                                                        alert("you have successfuly signed up");
+                                                                                        
+                                                                                        window.location.href="/index.html";
+                                                                                
+                                                                                }
+                                                                                else { // when error
+                                                                                        console.log('record is not inserted Error: ', response.error)
+                                                                                        
+                                                                                        
+                                                                                        if(response.error.code=="ER_DUP_ENTRY")
+                                                                                        {
+                                                                                                alert("This email id is alredy resgisterd");
+                                                                                        }
 
+                                                                                        
+                                                                                }
+                                                                                // alert('Record has been insert successfully')
                                                                         }).catch((err) => {
-
+                                                                                console.log('Error occured in insertion', err)
+                                                                                // alert('Error in insertion')
                                                                         }) // parses response to JSON
                                                                 }
                                                         </script>

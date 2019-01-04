@@ -55,11 +55,49 @@ app.post('/vendorSigupForm', (req, res) => {
     connection.query(sql, (err, result) => {
         if (err) {
             console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
-            res.send(JSON.stringify(err))
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
         } else {
             console.log("1 record inserted");
-            res.send(req.body)
+            res.status(200).send({ data: req.body, status: 200 })
         }
+    });
+})
+
+
+app.post('/login', (req, res) => {
+    let {
+        email_id, 
+        password } = req.body
+
+  //  var sql = 'SELECT * FROM customers WHERE address = ' + mysql.escape(adr);
+    var sql = 'SELECT * FROM signup WHERE email_id = ' + mysql.escape(email_id) + 'and password= '+ mysql.escape(password) ;
+  //  var sql ='SELECT * FROM signup WHERE email_id = ? and password= ?';
+    
+    connection.query(sql,[email_id][password],(err, result) => {    
+        if (err) {
+            console.log('Errrrrrrrrrrrrrrrrrrrrrrrrrr', err)
+            res.status(500).send(JSON.stringify({ error: err, status: 500 }))
+            
+    
+          }    
+
+
+       else
+       {
+                if(result.length>0)
+                {
+                    console.log("loign success");
+                    res.status(200).send({ data: req.body, status: 200 })
+                    
+                }
+                else
+                {
+                    res.status(204).send({ data: req.body, status: 204 })
+                    console.log("email and pass dont match");
+                    //res.status(204).send({ data: req.body, status: 204 })
+                }
+            }
+
     });
 })
 
