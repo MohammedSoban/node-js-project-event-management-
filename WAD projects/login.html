@@ -90,6 +90,12 @@
 					
 						if (response.status == 200) {
 								console.log('login successful', response.data)
+
+								const {user_id} = response.data;
+								console.log(user_id)
+								localStorage.setItem('user_id',user_id)
+								
+
 								alert("login successfull");
 								window.location.href="/c_dashboard.html";		 
 						}

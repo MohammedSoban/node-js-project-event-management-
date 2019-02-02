@@ -87,8 +87,15 @@
 				}).then((response) => {
 					
 						if (response.status == 200) {
-								console.log('login successful', response.data)
-								getID()
+								console.log('login successful', response.data);
+								const {vendor_id} = response.data;
+								console.log(vendor_id)
+								localStorage.setItem('vendor_id',vendor_id)
+								
+								const {email_id} = response.data;
+								console.log(email_id)
+								localStorage.setItem('email_id',email_id)
+
 								alert("login successfull");
 								window.location.href="/v_dashboard.html";		 
 						}
@@ -119,7 +126,7 @@
 		}
 	
 		
-		function getID()
+	/*	function getID()
 		{ 
 			
 			    var email_id = document.getElementById("email_id").value
@@ -156,7 +163,7 @@
 				}) // parses response to JSON
  
 
-		}
+		}*/
 </script>
 
 

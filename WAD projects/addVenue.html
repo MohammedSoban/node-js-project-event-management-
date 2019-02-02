@@ -105,9 +105,13 @@
             var v_address = document.getElementById("v_address").value
             var v_details = document.getElementById("v_details").value
 
-            
+          var vendor_id=  localStorage.getItem('vendor_id')
+          var v_email=localStorage.getItem('email_id')
+
             var url = 'http://localhost:3000/addVenue'
             var data = {
+                vendor_id,
+                v_email,
                 v_name,
                 v_price,
                 v_host,
